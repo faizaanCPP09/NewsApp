@@ -1,0 +1,21 @@
+componentDidMount() method:
+
+componentDidMount is a lifecycle method in React that gets called after the component has been added to the DOM. It is often used for performing side effects like data fetching, subscriptions, or manually changing the DOM.
+async and await:
+
+The async keyword is used to define an asynchronous function, which means the function will return a promise implicitly.
+await is used inside an asynchronous function to wait for a Promise to resolve before moving on to the next line of code. It simplifies asynchronous code and makes it look more synchronous.
+Fetching data from an API:
+
+The URL points to the News API endpoint, specifically requesting top headlines from the US in the business category, using the provided API key.
+fetch(url) is a browser function for making HTTP requests. It returns a Promise that resolves to the Response to that request.
+await fetch(url) is used to wait for the fetch operation to complete, and it returns the Response object.
+Parsing JSON data:
+
+data.json() is another asynchronous operation that returns a Promise which resolves to the result of parsing the body text as JSON.
+await data.json() waits for this parsing operation to complete.
+Updating the component state:
+
+parsedData.articles contains the parsed JSON data, which likely includes an array of news articles.
+this.setState({ articles: parsedData.articles }) is used to update the component's state with the fetched articles.
+In summary, this code is part of a React component, and when the component is mounted, it asynchronously fetches news articles from the specified API using the fetch function. The use of async/await makes the asynchronous code more readable and easier to work with. The fetched data is then parsed as JSON, and the component's state is updated with the array of articles.
