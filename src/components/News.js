@@ -51,7 +51,7 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
       console.error('Error fetching data:', error);
       setLoading(false);
     }
-  }, [country, category, apiKey, itemsPerPage, currentPage, articles]);
+  }, [category, itemsPerPage, currentPage, articles]);
 
   const handleObserver = useCallback((entries) => {
     if (loading || !hasMore) return;
@@ -104,7 +104,7 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
 News.defaultProps = {
   country: 'in',
   category: 'general',
-  //apiKey: 'REACT_APP_NEWS_API', // Make sure to replace with your actual API key
+  //apiKey: 'YOUR_NEWS_API_KEY', // Make sure to replace with your actual API key
 };
 
 News.propTypes = {
