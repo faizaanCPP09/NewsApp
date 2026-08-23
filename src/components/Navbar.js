@@ -7,7 +7,7 @@ const Navbar =()=> {
         <nav className="navbar fixed-top navbar-dark bg-dark navbar-expand">
           <div className="container-fluid">
             <div className="navbar-brand">
-              NewsMonkey
+              The News App
             </div>
             <button
               className="navbar-toggler"

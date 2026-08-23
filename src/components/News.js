@@ -22,7 +22,7 @@ const disconnectObserver = (observer) => {
   }
 };
 
-const News = ({ country = 'in', category = 'general', apiKey }) => {
+const News = ({ country = 'us', category = 'general', apiKey }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,8 +33,7 @@ const News = ({ country = 'in', category = 'general', apiKey }) => {
 
   const fetchData = useCallback(async () => {
     setLoading(true);
-    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&pageSize=${itemsPerPage}&page=${currentPage}`;
-
+    const url = `https://newsapi.org/v2/everything?q=${category}&language=en&sortBy=publishedAt&apiKey=${apiKey}&pageSize=${itemsPerPage}&page=${currentPage}`;
     try {
       const data = await fetch(url);
       const parsedData = await data.json();
@@ -51,7 +50,7 @@ const News = ({ country = 'in', category = 'general', apiKey }) => {
       console.error('Error fetching data:', error);
       setLoading(false);
     }
-  }, [country, category, apiKey, itemsPerPage, currentPage, articles]);
+  }, [category, apiKey, itemsPerPage, currentPage, articles]);
 
   const handleObserver = useCallback((entries) => {
     if (loading || !hasMore) return;
@@ -71,7 +70,7 @@ const News = ({ country = 'in', category = 'general', apiKey }) => {
   return (
     <div className='container'>
       <h1 className='class' style={{ fontFamily: 'cursive', marginTop: '6rem' }}>
-        NewsMonkey-Top Headline
+        Newsify-Top Headline
       </h1>
       <div className='row'>
         {articles.map((element, index) => (
