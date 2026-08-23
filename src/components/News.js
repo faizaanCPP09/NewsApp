@@ -33,7 +33,8 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
 
   const fetchData = useCallback(async () => {
     setLoading(true);
-    const url = `https://newsapi.org/v2/everything?q=${category}&language=en&sortBy=publishedAt&apiKey=${apiKey}&pageSize=${itemsPerPage}&page=${currentPage}`;
+    const url = `/api/news?category=${category}&pageSize=${itemsPerPage}&page=${currentPage}`;
+
     try {
       const data = await fetch(url);
       const parsedData = await data.json();
@@ -50,7 +51,7 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
       console.error('Error fetching data:', error);
       setLoading(false);
     }
-  }, [category, apiKey, itemsPerPage, currentPage, articles]);
+  }, [country, category, apiKey, itemsPerPage, currentPage, articles]);
 
   const handleObserver = useCallback((entries) => {
     if (loading || !hasMore) return;
@@ -70,7 +71,7 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
   return (
     <div className='container'>
       <h1 className='class' style={{ fontFamily: 'cursive', marginTop: '6rem' }}>
-        Newsify-Top Headline
+        NewsMonkey-Top Headline
       </h1>
       <div className='row'>
         {articles.map((element, index) => (
@@ -103,7 +104,7 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
 News.defaultProps = {
   country: 'in',
   category: 'general',
-  //apiKey: 'YOUR_NEWS_API_KEY', // Make sure to replace with your actual API key
+  //apiKey: 'REACT_APP_NEWS_API', // Make sure to replace with your actual API key
 };
 
 News.propTypes = {
