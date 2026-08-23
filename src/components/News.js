@@ -71,7 +71,7 @@ const News = ({ country = 'us', category = 'general', apiKey }) => {
   return (
     <div className='container'>
       <h1 className='class' style={{ fontFamily: 'cursive', marginTop: '6rem' }}>
-        NewsMonkey-Top Headline
+        Newsify-Top Headline
       </h1>
       <div className='row'>
         {articles.map((element, index) => (
